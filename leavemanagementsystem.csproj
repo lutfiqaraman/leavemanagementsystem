@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-leavemanagementsystem-3AEABB41-2AEF-43C0-B3DB-B4709C53E51B</UserSecretsId>
+    <StartupObject>leavemanagementsystem.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
