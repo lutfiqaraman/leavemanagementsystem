@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace leavemanagementsystem.Repository
 {
-    public class LeaveHistoryRepository : ILeaveHistory
+    public class LeaveHistoryRepository : ILeaveHistoryRepository
     {
         public ApplicationDbContext DbContext { get; private set; }
 

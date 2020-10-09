@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace leavemanagementsystem.Repository
 {
-    public class LeaveAllocation : ILeaveAllocation
+    public class LeaveAllocationRepository : ILeaveAllocationRepository
     {
         public ApplicationDbContext DbContext { get; private set; }
 
-        public LeaveAllocation(ApplicationDbContext db)
+        public LeaveAllocationRepository(ApplicationDbContext db)
         {
             DbContext = db;
         }
