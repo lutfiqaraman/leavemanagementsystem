@@ -227,7 +227,7 @@ namespace leavemanagementsystem.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("leavemanagementsystem.Data.Models.Employee", b =>
+            modelBuilder.Entity("leavemanagementsystem.Data.Entities.Employee", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 

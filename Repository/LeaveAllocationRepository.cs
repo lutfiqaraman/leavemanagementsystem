@@ -1,6 +1,6 @@
 ﻿using leavemanagementsystem.Contracts;
 using leavemanagementsystem.Data;
-using leavemanagementsystem.Data.Models;
+using leavemanagementsystem.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,25 +17,25 @@ namespace leavemanagementsystem.Repository
             DbContext = db;
         }
 
-        public bool Create(Data.Models.LeaveAllocation entity)
+        public bool Create(Data.Entities.LeaveAllocation entity)
         {
             DbContext.LeaveAllocations.Add(entity);
             return Save();
         }
 
-        public bool Delete(Data.Models.LeaveAllocation entity)
+        public bool Delete(Data.Entities.LeaveAllocation entity)
         {
             DbContext.LeaveAllocations.Remove(entity);
             return Save();
         }
 
-        public ICollection<Data.Models.LeaveAllocation> GetAll()
+        public ICollection<Data.Entities.LeaveAllocation> GetAll()
         {
             List<LeaveAllocation> leaveAllocations = DbContext.LeaveAllocations.ToList();
             return leaveAllocations;
         }
 
-        public Data.Models.LeaveAllocation GetById(int id)
+        public Data.Entities.LeaveAllocation GetById(int id)
         {
             LeaveAllocation leaveAllocation = DbContext.LeaveAllocations.Find(id);
             return leaveAllocation;
@@ -47,7 +47,7 @@ namespace leavemanagementsystem.Repository
             return numberOfRecordsChanged > 0;
         }
 
-        public bool Update(Data.Models.LeaveAllocation entity)
+        public bool Update(Data.Entities.LeaveAllocation entity)
         {
             DbContext.LeaveAllocations.Update(entity);
             return Save();

@@ -225,7 +225,7 @@ namespace leavemanagementsystem.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("leavemanagementsystem.Data.Models.LeaveAllocation", b =>
+            modelBuilder.Entity("leavemanagementsystem.Data.Entities.LeaveAllocation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -253,7 +253,7 @@ namespace leavemanagementsystem.Data.Migrations
                     b.ToTable("LeaveAllocations");
                 });
 
-            modelBuilder.Entity("leavemanagementsystem.Data.Models.LeaveHistory", b =>
+            modelBuilder.Entity("leavemanagementsystem.Data.Entities.LeaveHistory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -295,7 +295,7 @@ namespace leavemanagementsystem.Data.Migrations
                     b.ToTable("LeaveHistories");
                 });
 
-            modelBuilder.Entity("leavemanagementsystem.Data.Models.LeaveType", b =>
+            modelBuilder.Entity("leavemanagementsystem.Data.Entities.LeaveType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -314,7 +314,7 @@ namespace leavemanagementsystem.Data.Migrations
                     b.ToTable("LeaveTypes");
                 });
 
-            modelBuilder.Entity("leavemanagementsystem.Data.Models.Employee", b =>
+            modelBuilder.Entity("leavemanagementsystem.Data.Entities.Employee", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -387,32 +387,32 @@ namespace leavemanagementsystem.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("leavemanagementsystem.Data.Models.LeaveAllocation", b =>
+            modelBuilder.Entity("leavemanagementsystem.Data.Entities.LeaveAllocation", b =>
                 {
-                    b.HasOne("leavemanagementsystem.Data.Models.Employee", "Employee")
+                    b.HasOne("leavemanagementsystem.Data.Entities.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId");
 
-                    b.HasOne("leavemanagementsystem.Data.Models.LeaveType", "LeaveType")
+                    b.HasOne("leavemanagementsystem.Data.Entities.LeaveType", "LeaveType")
                         .WithMany()
                         .HasForeignKey("LeaveTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("leavemanagementsystem.Data.Models.LeaveHistory", b =>
+            modelBuilder.Entity("leavemanagementsystem.Data.Entities.LeaveHistory", b =>
                 {
-                    b.HasOne("leavemanagementsystem.Data.Models.Employee", "ApprovedBy")
+                    b.HasOne("leavemanagementsystem.Data.Entities.Employee", "ApprovedBy")
                         .WithMany()
                         .HasForeignKey("ApprovedById");
 
-                    b.HasOne("leavemanagementsystem.Data.Models.LeaveType", "LeaveType")
+                    b.HasOne("leavemanagementsystem.Data.Entities.LeaveType", "LeaveType")
                         .WithMany()
                         .HasForeignKey("LeaveTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("leavemanagementsystem.Data.Models.Employee", "RequestingEmployee")
+                    b.HasOne("leavemanagementsystem.Data.Entities.Employee", "RequestingEmployee")
                         .WithMany()
                         .HasForeignKey("RequestingEmployeeId");
                 });

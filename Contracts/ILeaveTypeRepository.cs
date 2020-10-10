@@ -1,4 +1,4 @@
-﻿using leavemanagementsystem.Data.Models;
+﻿using leavemanagementsystem.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
