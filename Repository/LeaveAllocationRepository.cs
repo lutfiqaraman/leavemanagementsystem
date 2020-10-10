@@ -1,5 +1,6 @@
 ﻿using leavemanagementsystem.Contracts;
 using leavemanagementsystem.Data;
+using leavemanagementsystem.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,32 +19,38 @@ namespace leavemanagementsystem.Repository
 
         public bool Create(Data.Models.LeaveAllocation entity)
         {
-            throw new NotImplementedException();
+            DbContext.LeaveAllocations.Add(entity);
+            return Save();
         }
 
         public bool Delete(Data.Models.LeaveAllocation entity)
         {
-            throw new NotImplementedException();
+            DbContext.LeaveAllocations.Remove(entity);
+            return Save();
         }
 
         public ICollection<Data.Models.LeaveAllocation> GetAll()
         {
-            throw new NotImplementedException();
+            List<LeaveAllocation> leaveAllocations = DbContext.LeaveAllocations.ToList();
+            return leaveAllocations;
         }
 
         public Data.Models.LeaveAllocation GetById(int id)
         {
-            throw new NotImplementedException();
+            LeaveAllocation leaveAllocation = DbContext.LeaveAllocations.Find(id);
+            return leaveAllocation;
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            int numberOfRecordsChanged = DbContext.SaveChanges();
+            return numberOfRecordsChanged > 0;
         }
 
         public bool Update(Data.Models.LeaveAllocation entity)
         {
-            throw new NotImplementedException();
+            DbContext.LeaveAllocations.Update(entity);
+            return Save();
         }
     }
 }

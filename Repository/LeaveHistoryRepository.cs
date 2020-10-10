@@ -19,32 +19,38 @@ namespace leavemanagementsystem.Repository
 
         public bool Create(LeaveHistory entity)
         {
-            throw new NotImplementedException();
+            DbContext.LeaveHistories.Add(entity);
+            return Save();
         }
 
         public bool Delete(LeaveHistory entity)
         {
-            throw new NotImplementedException();
+            DbContext.LeaveHistories.Remove(entity);
+            return Save();
         }
 
         public ICollection<LeaveHistory> GetAll()
         {
-            throw new NotImplementedException();
+            List<LeaveHistory> leaveHistories = DbContext.LeaveHistories.ToList();
+            return leaveHistories;
         }
 
         public LeaveHistory GetById(int id)
         {
-            throw new NotImplementedException();
+            LeaveHistory leaveHistory = DbContext.LeaveHistories.Find(id);
+            return leaveHistory;
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            int numberOfRecordsChanged = DbContext.SaveChanges();
+            return numberOfRecordsChanged > 0;
         }
 
         public bool Update(LeaveHistory entity)
         {
-            throw new NotImplementedException();
+            DbContext.LeaveHistories.Update(entity);
+            return Save();
         }
     }
 }
