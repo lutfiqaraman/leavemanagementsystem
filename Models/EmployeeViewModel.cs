@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace leavemanagementsystem.Models
 {
-    public class EmployeeViewModal
+    public class EmployeeViewModel
     {
         public string Id { get; set; }
         public string UserName { get; set; }

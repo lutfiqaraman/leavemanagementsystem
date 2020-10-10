@@ -16,7 +16,7 @@ namespace leavemanagementsystem.Models
         
         public DateTime DateCreated { get; set; }
         
-        public EmployeeViewModal Employee { get; set; }
+        public EmployeeViewModel Employee { get; set; }
         
         public string EmployeeId { get; set; }
 
