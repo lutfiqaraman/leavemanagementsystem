@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using leavemanagementsystem.Contracts;
+using leavemanagementsystem.Data.Entities;
+using leavemanagementsystem.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace leavemanagementsystem.Controllers
@@ -22,7 +24,11 @@ namespace leavemanagementsystem.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<LeaveType> leaveTypes = Repo.GetAll().ToList();
+            List<DetailsLeaveTypeViewModel> model = 
+                Mapper.Map<List<LeaveType>, List<DetailsLeaveTypeViewModel>>(leaveTypes);
+
+            return View(model);
         }
     }
 }
