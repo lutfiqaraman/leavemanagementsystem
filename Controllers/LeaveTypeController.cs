@@ -30,5 +30,14 @@ namespace leavemanagementsystem.Controllers
 
             return View(model);
         }
+
+        public JsonResult GetLeaveTypes()
+        {
+            List<LeaveType> leaveTypes = Repo.GetAll().ToList();
+            List<DetailsLeaveTypeViewModel> model =
+                Mapper.Map<List<LeaveType>, List<DetailsLeaveTypeViewModel>>(leaveTypes);
+
+            return Json(model);
+        }
     }
 }
