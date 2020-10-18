@@ -9,3 +9,33 @@
 <p>
     @Html.ActionLink("Create New ", "Create")
 </p>
+
+<table id="leavetypetable" class="display">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date Created</th>
+        </tr>
+    </thead>
+</table>
+
+<link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+@section scripts{ 
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script>
+        $('document').ready(function () {
+            $('#leavetypetable').DataTable({
+                "ajax": {
+                    "url": "/LeaveType/GetData",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "Name" },
+                    { "data": "DateCreated" }
+                ]
+            });
+        });
+    </script>
+}
