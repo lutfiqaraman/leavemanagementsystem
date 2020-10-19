@@ -10,6 +10,7 @@ namespace leavemanagementsystem.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
 
         [Display(Name = "Date Created")]
         public DateTime DateCreated { get; set; }
@@ -19,5 +20,6 @@ namespace leavemanagementsystem.Models
     {
         [Required]
         public string Name { get; set; }
+        public string Description { get; set; }
     }
 }
