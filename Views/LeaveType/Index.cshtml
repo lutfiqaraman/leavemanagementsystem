@@ -11,7 +11,7 @@
     @Html.ActionLink("Create New ", "Create")
 </p>
 
-<table id="leavetypetable" class="display">
+<table id="leavetypetable" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>Name</th>
@@ -21,9 +21,10 @@
     </thead>
 </table>
 
-<link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
 
 @section scripts{
     <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/js/leavetype.js"></script>
 }
