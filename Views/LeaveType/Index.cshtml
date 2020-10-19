@@ -23,22 +23,7 @@
 
 <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
 
-@section scripts{ 
+@section scripts{
     <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <script>
-        $('document').ready(function () {
-            $('#leavetypetable').DataTable({
-                "ajax": {
-                    "url": "/LeaveType/GetLeaveTypes",
-                    "type": "GET",
-                    "datatype": "json"
-                },
-                "columns": [
-                    { "data": "Name" },
-                    { "data": "Description"},
-                    { "data": "DateCreated" }
-                ]
-            });
-        });
-    </script>
+    <script src="~/js/leavetype.js"></script>
 }
