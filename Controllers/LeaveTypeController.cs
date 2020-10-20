@@ -22,7 +22,7 @@ namespace leavemanagementsystem.Controllers
             Mapper = mapper;
         }
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
@@ -36,16 +36,20 @@ namespace leavemanagementsystem.Controllers
             return Json(model);
         }
 
-        [HttpGet]
-        public IActionResult AddEditLeaveType(int id = 0)
+        public ActionResult AddEditLeaveType(int? id)
         {
-            return View(new LeaveType());
+            LeaveType model = new LeaveType();
+            return PartialView("_AddEditLeaveType", model);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
-        public IActionResult AddEditLeaveType()
+        public ActionResult AddEditLeaveType(LeaveType model)
         {
-            return View()
+            if (!ModelState.IsValid)
+                return PartialView("_AddEditLeaveType", model);
+
+            return RedirectToAction("Index");
         }
     }
 }
