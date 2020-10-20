@@ -24,11 +24,7 @@ namespace leavemanagementsystem.Controllers
 
         public IActionResult Index()
         {
-            List<LeaveType> leaveTypes = Repo.GetAll().ToList();
-            List<DetailsLeaveTypeViewModel> model = 
-                Mapper.Map<List<LeaveType>, List<DetailsLeaveTypeViewModel>>(leaveTypes);
-
-            return View(model);
+            return View();
         }
 
         public JsonResult GetLeaveTypes()
@@ -38,6 +34,18 @@ namespace leavemanagementsystem.Controllers
                 Mapper.Map<List<LeaveType>, List<DetailsLeaveTypeViewModel>>(leaveTypes);
 
             return Json(model);
+        }
+
+        [HttpGet]
+        public IActionResult AddEditLeaveType(int id = 0)
+        {
+            return View(new LeaveType());
+        }
+
+        [HttpPost]
+        public IActionResult AddEditLeaveType()
+        {
+            return View()
         }
     }
 }
