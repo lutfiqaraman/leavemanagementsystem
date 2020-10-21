@@ -30,7 +30,7 @@
             <div class="form-group row">
                 @Html.LabelFor(model => model.Description, new { @class = "col-sm-2 col-form-label" })
                 <div class="col-sm-10">
-                    <textarea asp-for="@Model.Description" class="form-control" placeholder="Please enter description here" />
+                    <input asp-for="@Model.Description" placeholder="Enter Description" class="form-control"/>
                 </div>
             </div>
 
