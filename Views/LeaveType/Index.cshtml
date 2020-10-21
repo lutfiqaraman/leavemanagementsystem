@@ -32,8 +32,10 @@
 
 <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
 
+<partial name="../Shared/_Model.cshtml">
+
 @section scripts{
     <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/js/leavetype.js"></script>
+    <script src="~/js/leavetype.js" asp-append-version="true"></script>
 }

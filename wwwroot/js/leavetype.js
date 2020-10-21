@@ -21,7 +21,7 @@
     }
     
     function Index() {
-
+        
         var $this = this;
 
         function initialize() {
@@ -50,6 +50,7 @@
     $(function () {
         var self = new Index();
         self.init();
+
         Grid();
     });
 
