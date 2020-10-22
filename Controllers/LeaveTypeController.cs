@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using leavemanagementsystem.Contracts;
+using leavemanagementsystem.Data;
 using leavemanagementsystem.Data.Entities;
 using leavemanagementsystem.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -46,6 +47,9 @@ namespace leavemanagementsystem.Controllers
         [HttpPost]
         public ActionResult AddEditLeaveType(LeaveType model)
         {
+            model.DateCreated = DateTime.Now;
+            Repo.Create(model);
+
             if (!ModelState.IsValid)
                 return PartialView("_AddEditLeaveType", model);
 
