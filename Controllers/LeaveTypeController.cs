@@ -31,10 +31,13 @@ namespace leavemanagementsystem.Controllers
         public JsonResult GetLeaveTypes()
         {
             List<LeaveType> leaveTypes = Repo.GetAll().ToList();
-            List<DetailsLeaveTypeViewModel> model =
-                Mapper.Map<List<LeaveType>, List<DetailsLeaveTypeViewModel>>(leaveTypes);
+            
+            var result = Json(new
+            {
+                data = leaveTypes
+            });
 
-            return Json(model);
+            return result;
         }
 
         public ActionResult AddEditLeaveType(int? id)

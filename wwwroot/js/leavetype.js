@@ -2,6 +2,7 @@
 
     function Grid() {
         $('document').ready(function () {
+
             $('#leavetypetable').DataTable({
                 "ajax": {
                     "url": "/LeaveType/GetLeaveTypes",
@@ -9,9 +10,9 @@
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "Name" },
-                    { "data": "Description" },
-                    { "data": "DateCreated" }
+                    { "data": "name" },
+                    { "data": "description" },
+                    { "data": "dateCreated" }
                 ],
                 "language": {
                     "emptyTable": " No data found "
