@@ -21,7 +21,7 @@
         });
     }
     
-    function Index() {
+    function Modal() {
         
         var $this = this;
 
@@ -49,8 +49,8 @@
     }
 
     $(function () {
-        var self = new Index();
-        self.init();
+        var leaveTypeModal = new Modal();
+        leaveTypeModal.init();
 
         Grid();
     });
