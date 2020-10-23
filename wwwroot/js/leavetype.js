@@ -12,7 +12,13 @@
                 "columns": [
                     { "data": "name" },
                     { "data": "description" },
-                    { "data": "dateCreated" }
+                    { "data": "dateCreated" },
+                    {
+                        "data": "Id", "render": function () {
+                            return "<a class='btn btn-outline-secondary'><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-outline-danger' style='margin-left: 5px'><i class='fa fa-trash'></i> Delete</a>"
+                        },
+                        "orderable": false
+                    }
                 ],
                 "language": {
                     "emptyTable": " No data found "
