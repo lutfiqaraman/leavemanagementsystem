@@ -16,7 +16,6 @@ namespace leavemanagementsystem.Controllers
         public ILeaveTypeRepository Repo { get; private set; }
         public IMapper Mapper { get; private set; }
         
-
         public LeaveTypeController(ILeaveTypeRepository leaveTypeRepository, IMapper mapper)
         {
             Repo = leaveTypeRepository;
@@ -25,19 +24,25 @@ namespace leavemanagementsystem.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            List<DetailsLeaveTypeViewModel> listLeaveTypes = GetLeaveTypes();
+            return View(listLeaveTypes);
         }
 
-        public JsonResult GetLeaveTypes()
+        public List<DetailsLeaveTypeViewModel> GetLeaveTypes()
         {
             List<LeaveType> leaveTypes = Repo.GetAll().ToList();
-            
-            var result = Json(new
+
+            MapperConfiguration config = new MapperConfiguration(cfg =>
             {
-                data = leaveTypes
+                cfg.CreateMap<LeaveType, DetailsLeaveTypeViewModel>();
             });
 
-            return result;
+            Mapper = config.CreateMapper();
+
+            List<DetailsLeaveTypeViewModel> detailsLeaveTypeViewModels =
+                Mapper.Map<List<LeaveType>, List<DetailsLeaveTypeViewModel>>(leaveTypes);
+
+            return detailsLeaveTypeViewModels;
         }
 
         public ActionResult AddEditLeaveType(int? id)
