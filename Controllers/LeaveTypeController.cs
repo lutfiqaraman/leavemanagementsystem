@@ -45,10 +45,19 @@ namespace leavemanagementsystem.Controllers
             return detailsLeaveTypeViewModels;
         }
 
+        [HttpGet]
         public ActionResult AddEditLeaveType(int? id)
         {
-            LeaveType model = new LeaveType();
-            return PartialView("_AddEditLeaveType", model);
+            if (id == 0)
+            {
+                LeaveType model = new LeaveType();
+                return PartialView("_AddEditLeaveType", model);
+            }
+            else
+            {
+                var model = Repo.GetById((int)id);
+                return PartialView("_AddEditLeaveType", model);
+            }
         }
 
         [ValidateAntiForgeryToken]
