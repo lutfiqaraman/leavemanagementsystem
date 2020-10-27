@@ -48,7 +48,7 @@ namespace leavemanagementsystem.Controllers
         [HttpGet]
         public ActionResult AddEditLeaveType(int? id)
         {
-            if (id == 0)
+            if ( id == 0  || String.IsNullOrEmpty(id.ToString()) )
             {
                 LeaveType model = new LeaveType();
                 return PartialView("_AddEditLeaveType", model);
