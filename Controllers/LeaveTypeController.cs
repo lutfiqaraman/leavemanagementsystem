@@ -62,13 +62,21 @@ namespace leavemanagementsystem.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult AddEditLeaveType(LeaveType model)
+        public ActionResult AddEditLeaveType(LeaveType leaveType)
         {
-            model.DateCreated = DateTime.Now;
-            Repo.Create(model);
+            if (leaveType.Id == 0)
+            {
+                leaveType.DateCreated = DateTime.Now;
+                Repo.Create(leaveType);
 
-            if (!ModelState.IsValid)
-                return PartialView("_AddEditLeaveType", model);
+                if (!ModelState.IsValid)
+                    return PartialView("_AddEditLeaveType", leaveType);
+
+            } else
+            {
+                Repo.Update(leaveType);
+                return PartialView("_AddEditLeaveType", leaveType);
+            }
 
             return RedirectToAction("Index");
         }
