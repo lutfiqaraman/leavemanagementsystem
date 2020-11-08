@@ -74,8 +74,12 @@ namespace leavemanagementsystem.Controllers
 
             } else
             {
-                Repo.Update(leaveType);
-                return PartialView("_AddEditLeaveType", leaveType);
+                if (!ModelState.IsValid)
+                {
+                    Repo.Update(leaveType);
+                    return PartialView("_AddEditLeaveType", leaveType);
+                }
+                
             }
 
             return RedirectToAction("Index");
