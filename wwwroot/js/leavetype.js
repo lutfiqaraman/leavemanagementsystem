@@ -1,35 +1,45 @@
-﻿(function ($) {
+﻿//(function ($) {
 
-    function Modal() {
+//    function Modal() {
         
-        var $this = this;
+//        var $this = this;
 
-        function initialize() {
+//        function initialize() {
 
-            $(".popup").on('click', function (e) {
-                modelPopup(this);
-            });
+//            $(".popup").on('click', function (e) {
+//                modelPopup(this);
+//            });
 
-            function modelPopup(reff) {
+//            function modelPopup(reff) {
                 
-                var url = $(reff).data('url');
+//                var url = $(reff).data('url');
 
-                $.get(url).done(function (data) {
-                    $('#modal-add-edit').find(".modal-dialog").html(data);
-                    $('#modal-add-edit > .modal', data).modal("show");
-                });
+//                $.get(url).done(function (data) {
+//                    $('#modal-add-edit').find(".modal-dialog").html(data);
+//                    $('#modal-add-edit > .modal', data).modal("show");
+//                });
 
-            }
-        }
+//            }
+//        }
 
-        $this.init = function () {
-            initialize();
-        };
-    }
+//        $this.init = function () {
+//            initialize();
+//        };
+//    }
 
-    $(function () {
-        var leaveTypeModal = new Modal();
-        leaveTypeModal.init();
+//    $(function () {
+//        var leaveTypeModal = new Modal();
+//        leaveTypeModal.init();
+//    });
+
+//}(jQuery));
+
+(function ($) {
+
+    $(document).ready(function () {
+        $("#leaveTypeTable").DataTable({
+
+        });
     });
 
-}(jQuery));
+}(jQuery))
