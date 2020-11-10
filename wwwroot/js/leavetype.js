@@ -38,7 +38,16 @@
 
     $(document).ready(function () {
         $("#leaveTypeTable").DataTable({
-
+            "ajax": {
+                "url": "/leavetype/GetLeaveType",
+                "type": "GET",
+                "datatype": "json"
+            },
+            "columns": [
+                { "data": "name" },
+                { "data": "description" },
+                { "data": "dateCreated" }
+            ]
         });
     });
 

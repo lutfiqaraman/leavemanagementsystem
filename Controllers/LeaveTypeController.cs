@@ -30,8 +30,14 @@ namespace leavemanagementsystem.Controllers
 
         public JsonResult GetLeaveType()
         {
-            List<DetailsLeaveTypeViewModel> listLeaveTypes = GetLeaveTypes();
-            return Json(listLeaveTypes);
+            List<DetailsLeaveTypeViewModel> leaveTypes = GetLeaveTypes();
+
+            JsonResult result = Json(new
+            {
+                data = leaveTypes
+            });
+
+            return result;
         }
 
         public List<DetailsLeaveTypeViewModel> GetLeaveTypes()
