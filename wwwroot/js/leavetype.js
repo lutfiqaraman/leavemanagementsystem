@@ -1,54 +1,37 @@
-﻿//(function ($) {
+﻿var popUp, dataTable;
 
-//    function Modal() {
-        
-//        var $this = this;
-
-//        function initialize() {
-
-//            $(".popup").on('click', function (e) {
-//                modelPopup(this);
-//            });
-
-//            function modelPopup(reff) {
-                
-//                var url = $(reff).data('url');
-
-//                $.get(url).done(function (data) {
-//                    $('#modal-add-edit').find(".modal-dialog").html(data);
-//                    $('#modal-add-edit > .modal', data).modal("show");
-//                });
-
-//            }
-//        }
-
-//        $this.init = function () {
-//            initialize();
-//        };
-//    }
-
-//    $(function () {
-//        var leaveTypeModal = new Modal();
-//        leaveTypeModal.init();
-//    });
-
-//}(jQuery));
-
-(function ($) {
-
-    $(document).ready(function () {
-        $("#leaveTypeTable").DataTable({
-            "ajax": {
-                "url": "/leavetype/GetLeaveType",
-                "type": "GET",
-                "datatype": "json"
-            },
-            "columns": [
-                { "data": "name" },
-                { "data": "description" },
-                { "data": "dateCreated" }
-            ]
-        });
+$(document).ready(function () {
+    dataTable = $("#leaveTypeTable").DataTable({
+        "ajax": {
+            "url": "/leavetype/GetLeaveType",
+            "type": "GET",
+            "datatype": "json"
+        },
+        "columns": [
+            { "data": "name" },
+            { "data": "description" },
+            { "data": "dateCreated" }
+        ]
     });
+});
 
-}(jQuery))
+function PopupForm(url) {
+
+    var formDiv = $('<div/>');
+
+    $.get(url)
+        .done(function (response) {
+            formDiv.html(response);
+
+            popUp = formDiv.dialog({
+                autoOpen: true,
+                resizable: false,
+                title: 'Add/Edit Leave Type',
+                height: 375,
+                width: 500,
+                close: function () {
+                    popUp.dialog('destroy').remove();
+                }
+            });
+        });
+}

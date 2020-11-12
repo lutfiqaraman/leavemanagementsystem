@@ -58,43 +58,16 @@ namespace leavemanagementsystem.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddEditLeaveType(int? id)
+        public ActionResult AddEditLeaveType(int id = 0)
         {
-            if ( id == 0  || String.IsNullOrEmpty(id.ToString()) )
-            {
-                LeaveType model = new LeaveType();
-                return PartialView("_AddEditLeaveType", model);
-            }
-            else
-            {
-                var model = Repo.GetById((int)id);
-                return PartialView("_AddEditLeaveType", model);
-            }
+            var model = new LeaveType();
+            return PartialView("_AddEditLeaveType", model);
         }
 
-        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult AddEditLeaveType(LeaveType leaveType)
         {
-            if (leaveType.Id == 0)
-            {
-                leaveType.DateCreated = DateTime.Now;
-                Repo.Create(leaveType);
-
-                if (!ModelState.IsValid)
-                    return PartialView("_AddEditLeaveType", leaveType);
-
-            } else
-            {
-                if (!ModelState.IsValid)
-                {
-                    Repo.Update(leaveType);
-                    return PartialView("_AddEditLeaveType", leaveType);
-                }
-                
-            }
-
-            return RedirectToAction("Index");
+            return View();
         }
     }
 }
