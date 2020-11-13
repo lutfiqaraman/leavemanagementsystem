@@ -46,6 +46,10 @@ function SubmitForm(form) {
             if (data.success) {
                 popUp.dialog('close');
                 dataTable.ajax.reload();
+                $.notify('Saved Successfully', {
+                    position: 'top center',
+                    className: 'success'
+                });
             }
         }
     });
