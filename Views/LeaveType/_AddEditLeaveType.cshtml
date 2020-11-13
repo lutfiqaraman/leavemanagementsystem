@@ -1,6 +1,6 @@
 ﻿@model leavemanagementsystem.Data.Entities.LeaveType
 
-@using (Html.BeginForm("AddEditLeaveType", "LeaveType", FormMethod.Post, new { id = "AddEditLeaveTypeForm" }))
+@using (Html.BeginForm("AddEditLeaveType", "LeaveType", FormMethod.Post, new { id = "AddEditLeaveTypeForm", onsubmit = "return SubmitForm(this)" }))
 {
     @Html.HiddenFor(model => model.Id)
 

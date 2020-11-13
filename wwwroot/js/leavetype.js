@@ -35,3 +35,20 @@ function PopupForm(url) {
             });
         });
 }
+
+function SubmitForm(form) {
+
+    $.ajax({
+        type: 'POST',
+        url: form.action,
+        data: $(form).serialize(),
+        success: function (data) {
+            if (data.success) {
+                popUp.dialog('close');
+                dataTable.ajax.reload();
+            }
+        }
+    });
+
+    return false;
+}
