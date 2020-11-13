@@ -58,7 +58,7 @@ namespace leavemanagementsystem.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddEditLeaveType(int id = 0)
+        public ActionResult AddEditLeaveType()
         {
             var model = new LeaveType();
             return PartialView("_AddEditLeaveType", model);
