@@ -42,15 +42,19 @@ function SubmitForm(form) {
         type: 'POST',
         url: form.action,
         data: $(form).serialize(),
-        success: function (data) {
-            if (data.success) {
-                popUp.dialog('close');
-                dataTable.ajax.reload();
-                $.notify('Saved Successfully', {
-                    position: 'top center',
-                    className: 'success'
-                });
-            }
+        success: function () {
+            popUp.dialog('close');
+            dataTable.ajax.reload();
+            $.notify('Saved Successfully', {
+                globalPosition: 'left center',
+                className: 'success'
+            });
+        },
+        error: function (error) {
+            $.notify(error, {
+                globalPosition: 'left center',
+                className: 'error'
+            })
         }
     });
 
