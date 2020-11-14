@@ -80,14 +80,12 @@ namespace leavemanagementsystem.Controllers
 
                 if (!ModelState.IsValid)
                     return PartialView("_AddEditLeaveType", model);
-
             } else 
             {
-                if (!ModelState.IsValid)
-                {
-                    Repo.Update(model);
+                Repo.Update(model);
+
+                if (!ModelState.IsValid)    
                     return PartialView("_AddEditLeaveType", model);
-                }
             }
 
             return View("Index");
