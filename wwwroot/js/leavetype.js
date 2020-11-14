@@ -10,13 +10,20 @@ $(document).ready(function () {
         "columns": [
             { "data": "name" },
             { "data": "description" },
-            { "data": "dateCreated" }
+            { "data": "dateCreated" },
+            {
+                "data": "Id", "render": function (data) {
+                    return "<a class='btn btn-primary btn-sm text-white'><i class='fa fa-pencil'></i > Edit</a > <a class='btn btn-danger btn-sm text-white' style='margin-left: 5px'><i class='fa fa-trash'></i> Delete</a>"
+                },
+                "orderable": false,
+                "width": "150px"
+            }
         ]
     });
 });
 
 function PopupForm(url) {
-
+    alert(url);
     var formDiv = $('<div/>');
 
     $.get(url)

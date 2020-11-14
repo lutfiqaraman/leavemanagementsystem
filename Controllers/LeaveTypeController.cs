@@ -55,10 +55,18 @@ namespace leavemanagementsystem.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddEditLeaveType()
+        public ActionResult AddEditLeaveType(int id = 0)
         {
-            var model = new LeaveType();
-            return PartialView("_AddEditLeaveType", model);
+            if (id == 0)
+            {
+                LeaveType model = new LeaveType();
+                return PartialView("_AddEditLeaveType", model);
+            } else
+            {
+                LeaveType model = Repo.GetById(id);
+                return PartialView("_AddEditLeaveType", model);
+            }
+            
         }
 
         [HttpPost]
