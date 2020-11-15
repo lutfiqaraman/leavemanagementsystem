@@ -1,7 +1,9 @@
-﻿var popUp, dataTable;
+﻿var popUp;
 
 $(document).ready(function () {
-    dataTable = $("#leaveTypeTable").DataTable({
+
+    var table = $("#leaveTypeTable").DataTable({
+        lengthChange: false,
         "ajax": {
             "url": "/leavetype/GetLeaveType",
             "type": "GET",
@@ -10,23 +12,14 @@ $(document).ready(function () {
         "columns": [
             { "data": "name" },
             { "data": "description" },
-            {
-                "data": "dateCreated",
-                "width": "150px"
-            },
-            {
-                "data": "Id", "render": function (data) {
-                    return "<a class='btn btn-primary btn-sm text-white'><i class='fa fa-pencil'></i > Edit</a > <a class='btn btn-danger btn-sm text-white' style='margin-left: 5px'><i class='fa fa-trash'></i> Delete</a>"
-                },
-                "orderable": false,
-                "width": "125px"
-            }
-        ]
+            { "data": "dateCreated" }
+        ],
+        select: true
     });
 });
 
 function PopupForm(url) {
-    alert(url);
+
     var formDiv = $('<div/>');
 
     $.get(url)
