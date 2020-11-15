@@ -4,22 +4,47 @@ $(document).ready(function () {
 
     var table = $("#leaveTypeTable").DataTable({
         lengthChange: false,
+        select: true,
+        dom: 'Bfrtip',
+        
         "ajax": {
             "url": "/leavetype/GetLeaveType",
             "type": "GET",
             "datatype": "json"
         },
+
+        buttons: [
+            {
+                text: 'New',
+                action: function (e, dt, node, config) {
+                    PopupForm();
+                }
+            },
+            {
+                text: 'Edit',
+                action: function (e, dt, node, config) {
+                    PopupForm();
+                }
+            },
+            {
+                text: 'Delete',
+                action: function (e, dt, node, config) {
+                    alert('Button activated');
+                }
+            }
+        ],
+
         "columns": [
             { "data": "name" },
             { "data": "description" },
             { "data": "dateCreated" }
-        ],
-        select: true
+        ]
     });
+
 });
 
 function PopupForm(url) {
-
+    
     var formDiv = $('<div/>');
 
     $.get(url)
