@@ -16,14 +16,17 @@ $(document).ready(function () {
         buttons: [
             {
                 text: 'New',
-                action: function (e, dt, node, config) {
+                action: function () {
                     PopupForm();
                 }
             },
             {
                 text: 'Edit',
-                action: function (e, dt, node, config) {
-                    PopupForm();
+                action: function () {
+                    var id = table.rows({ selected: true }).data()[0].id;
+                    var url = '/leavetype/AddEditLeaveType/' + id;
+     
+                    PopupForm(url);
                 }
             },
             {
@@ -44,7 +47,7 @@ $(document).ready(function () {
 });
 
 function PopupForm(url) {
-    
+   
     var formDiv = $('<div/>');
 
     $.get(url)
