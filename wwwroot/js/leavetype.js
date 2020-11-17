@@ -17,7 +17,8 @@ $(document).ready(function () {
             {
                 text: 'New',
                 action: function () {
-                    PopupForm();
+                    var url = '/leavetype/AddEditLeaveType';
+                    PopupForm(url);
                 }
             },
             {
@@ -31,8 +32,11 @@ $(document).ready(function () {
             },
             {
                 text: 'Delete',
-                action: function (e, dt, node, config) {
-                    alert('Button activated');
+                action: function () {
+                    var id  = table.rows({ selected: true }).data()[0].id;
+                    var url = '/leavetype/DeleteLeaveType/' + id;
+
+                    DeleteLeaveType(url);
                 }
             }
         ],
@@ -90,4 +94,20 @@ function SubmitForm(form) {
     });
 
     return false;
+}
+
+function DeleteLeaveType(url) {
+    if (confirm('Are you sure to delete this leave type')) {
+        $.ajax({
+            type: 'POST',
+            url: url,
+            success: function () {
+                $.notify('Deleted successfully', {
+                    globalPosition: 'left center',
+                    className: 'success'
+                });
+
+            }
+        })
+    }
 }
