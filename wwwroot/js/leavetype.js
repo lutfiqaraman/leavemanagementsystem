@@ -80,7 +80,7 @@ function SubmitForm(form) {
         success: function () {
             popUp.dialog('close');
             dataTable.ajax.reload();
-            $.notify('Saved Successfully', {
+            $.notify('Saved Successfully ...', {
                 globalPosition: 'left center',
                 className: 'success'
             });
@@ -102,7 +102,7 @@ function DeleteLeaveType(url) {
             type: 'POST',
             url: url,
             success: function () {
-                $.notify('Deleted successfully', {
+                $.notify('Deleted successfully ...', {
                     globalPosition: 'left center',
                     className: 'success'
                 });
