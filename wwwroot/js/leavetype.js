@@ -101,11 +101,16 @@ function DeleteLeaveType(url) {
         $.ajax({
             type: 'POST',
             url: url,
-            success: function () {
-                $.notify('Deleted successfully ...', {
-                    globalPosition: 'left center',
-                    className: 'success'
-                });
+            success: function (data) {
+                if (data.success) {
+                    $.notify('Deleted successfully ...', {
+                        globalPosition: 'left center',
+                        className: 'success'
+                    });
+
+                    window.location.reload();
+                }
+                
 
             }
         })

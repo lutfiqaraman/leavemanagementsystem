@@ -97,7 +97,10 @@ namespace leavemanagementsystem.Controllers
             LeaveType leaveType = Repo.GetById(id);
             Repo.Delete(leaveType);
 
-            return Redirect("index");
+            return Json(new
+            {
+                success = true
+            });
         }
     }
 }
