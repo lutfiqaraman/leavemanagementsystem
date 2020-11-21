@@ -88,7 +88,10 @@ namespace leavemanagementsystem.Controllers
                     return PartialView("_AddEditLeaveType", model);
             }
 
-            return View("Index");
+            return Json(new { 
+                success = true,
+                message = "Added Successfully"
+            }); 
         }
 
         [HttpPost]
