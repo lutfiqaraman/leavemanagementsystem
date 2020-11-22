@@ -110,8 +110,6 @@ function DeleteLeaveType(url) {
 
                     window.location.reload();
                 }
-                
-
             }
         })
     }
