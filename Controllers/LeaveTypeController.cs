@@ -74,13 +74,17 @@ namespace leavemanagementsystem.Controllers
         {
             LeaveType model = leaveType;
 
+            // Create a leave type
             if (model.Id == 0)
             {
                 Repo.Create(leaveType);
 
                 if (!ModelState.IsValid)
                     return PartialView("_AddEditLeaveType", model);
-            } else 
+            }
+            
+            // Edit a leave type
+            if (model.Id != 0)
             {
                 Repo.Update(model);
 
