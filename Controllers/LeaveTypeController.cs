@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace leavemanagementsystem.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class LeaveTypeController : Controller
     {
         public ILeaveTypeRepository Repo { get; private set; }
@@ -20,7 +21,6 @@ namespace leavemanagementsystem.Controllers
             Mapper = mapper;
         }
 
-        [Authorize]
         public ActionResult Index()
         {
             List<DetailsLeaveTypeViewModel> listLeaveTypes = GetLeaveTypes();
