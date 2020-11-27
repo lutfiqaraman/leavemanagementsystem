@@ -4,6 +4,7 @@ using AutoMapper;
 using leavemanagementsystem.Contracts;
 using leavemanagementsystem.Data.Entities;
 using leavemanagementsystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace leavemanagementsystem.Controllers
@@ -19,6 +20,7 @@ namespace leavemanagementsystem.Controllers
             Mapper = mapper;
         }
 
+        [Authorize]
         public ActionResult Index()
         {
             List<DetailsLeaveTypeViewModel> listLeaveTypes = GetLeaveTypes();
