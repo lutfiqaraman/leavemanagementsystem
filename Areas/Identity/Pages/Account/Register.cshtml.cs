@@ -97,7 +97,9 @@ namespace leavemanagementsystem.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    _userManager.AddToRoleAsync(user, "Employee").Wait();
                     _logger.LogInformation("User created a new account with password.");
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
                     return LocalRedirect(returnUrl);

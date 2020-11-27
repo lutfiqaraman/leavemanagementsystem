@@ -78,6 +78,8 @@ namespace leavemanagementsystem
             app.UseAuthentication();
             app.UseAuthorization();
 
+            SeedData.Seed(userManager, roleManager);
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
