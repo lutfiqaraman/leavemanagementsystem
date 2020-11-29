@@ -44,7 +44,7 @@ $(document).ready(function () {
         "columns": [
             { "data": "name" },
             { "data": "description" },
-            { "data": "dateCreated" }
+            { "data": "defaultDays" }
         ]
     });
 
