@@ -23,10 +23,10 @@ namespace leavemanagementsystem.Repository
             return Save();
         }
 
-        public bool Delete(Data.Entities.LeaveAllocation entity)
+        public void Delete(Data.Entities.LeaveAllocation entity)
         {
             DbContext.LeaveAllocations.Remove(entity);
-            return Save();
+            DbContext.SaveChanges();
         }
 
         public ICollection<Data.Entities.LeaveAllocation> GetAll()

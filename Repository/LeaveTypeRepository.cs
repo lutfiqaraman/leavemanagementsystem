@@ -23,10 +23,10 @@ namespace leavemanagementsystem.Repository
             return Save();
         }
 
-        public bool Delete(LeaveType entity)
+        public void Delete(LeaveType entity)
         {
             DbContext.LeaveTypes.Remove(entity);
-            return Save();
+            DbContext.SaveChanges();
         }
 
         public ICollection<LeaveType> GetAll()

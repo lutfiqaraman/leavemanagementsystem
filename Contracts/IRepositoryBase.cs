@@ -11,7 +11,7 @@ namespace leavemanagementsystem.Contracts
         T GetById(int id);
         bool Create(T entity);
         bool Update(T entity);
-        bool Delete(T entity);
+        void Delete(T entity);
         bool Save();
     }
 }

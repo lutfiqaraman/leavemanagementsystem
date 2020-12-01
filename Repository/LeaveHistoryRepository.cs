@@ -23,10 +23,10 @@ namespace leavemanagementsystem.Repository
             return Save();
         }
 
-        public bool Delete(LeaveHistory entity)
+        public void Delete(LeaveHistory entity)
         {
             DbContext.LeaveHistories.Remove(entity);
-            return Save();
+            DbContext.SaveChanges();
         }
 
         public ICollection<LeaveHistory> GetAll()
