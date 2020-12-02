@@ -60,6 +60,8 @@ namespace leavemanagementsystem.Controllers
         public ActionResult AddEditLeaveType(int id = 0)
         {
             LeaveType model = new LeaveType();
+            LeaveType leaveType = Repo.GetById(id);
+
             MapperConfiguration config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<LeaveType, DetailsLeaveTypeViewModel>();
@@ -71,13 +73,9 @@ namespace leavemanagementsystem.Controllers
                 Mapper.Map<LeaveType, DetailsLeaveTypeViewModel>(model);
 
             if (id == 0)
-            {
                 return PartialView("_AddEditLeaveType", model);
-            } else
-            {
-                LeaveType leaveType = Repo.GetById(id);
+            else
                 return PartialView("_AddEditLeaveType", leaveType);
-            }
             
         }
 
