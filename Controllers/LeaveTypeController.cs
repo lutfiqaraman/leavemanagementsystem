@@ -59,14 +59,24 @@ namespace leavemanagementsystem.Controllers
         [HttpGet]
         public ActionResult AddEditLeaveType(int id = 0)
         {
+            LeaveType model = new LeaveType();
+            MapperConfiguration config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<LeaveType, DetailsLeaveTypeViewModel>();
+            });
+
+            Mapper = config.CreateMapper();
+
+            DetailsLeaveTypeViewModel detailsLeaveTypeViewModels =
+                Mapper.Map<LeaveType, DetailsLeaveTypeViewModel>(model);
+
             if (id == 0)
             {
-                LeaveType model = new LeaveType();
                 return PartialView("_AddEditLeaveType", model);
             } else
             {
-                LeaveType model = Repo.GetById(id);
-                return PartialView("_AddEditLeaveType", model);
+                LeaveType leaveType = Repo.GetById(id);
+                return PartialView("_AddEditLeaveType", leaveType);
             }
             
         }
