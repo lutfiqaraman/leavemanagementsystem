@@ -1,4 +1,5 @@
-﻿@model leavemanagementsystem.Data.Entities.LeaveType
+﻿@*@model leavemanagementsystem.Data.Entities.LeaveType*@
+@model leavemanagementsystem.Models.DetailsLeaveTypeViewModel
 
 @using (Html.BeginForm("AddEditLeaveType", "LeaveType", FormMethod.Post, new { id = "AddEditLeaveTypeForm", onsubmit = "SubmitForm(this)" }))
 {
