@@ -8,7 +8,7 @@ namespace leavemanagementsystem.Models
 {
     public class DetailsLeaveTypeViewModel
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         public string Name { get; set; }
         

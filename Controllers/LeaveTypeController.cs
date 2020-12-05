@@ -59,47 +59,44 @@ namespace leavemanagementsystem.Controllers
         [HttpGet]
         public ActionResult AddEditLeaveType(int id = 0)
         {
-            LeaveType model = new LeaveType();
-            LeaveType leaveType = Repo.GetById(id);
+            LeaveType model = Repo.GetById(id);
 
-            MapperConfiguration config = new MapperConfiguration(cfg =>
-            {
+            MapperConfiguration config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<LeaveType, DetailsLeaveTypeViewModel>();
             });
 
-            Mapper = config.CreateMapper();
-
-            DetailsLeaveTypeViewModel detailsLeaveTypeViewModels =
-                Mapper.Map<LeaveType, DetailsLeaveTypeViewModel>(model);
+            DetailsLeaveTypeViewModel detailsLeaveTypeViewModel = 
+                config.CreateMapper().Map<DetailsLeaveTypeViewModel>(model);
 
             if (id == 0)
-                return PartialView("_AddEditLeaveType", model);
+                return PartialView("_AddEditLeaveType", detailsLeaveTypeViewModel);
             else
-                return PartialView("_AddEditLeaveType", leaveType);
-            
+                return PartialView("_AddEditLeaveType", detailsLeaveTypeViewModel);
+
         }
 
         [HttpPost]
-        public ActionResult AddEditLeaveType(LeaveType leaveType)
+        public ActionResult AddEditLeaveType(DetailsLeaveTypeViewModel leaveTypeViewModel)
         {
-            LeaveType model = leaveType;
+            MapperConfiguration config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<DetailsLeaveTypeViewModel, LeaveType>();
+            });
 
-            // Create a leave type
-            if (model.Id == 0)
+            LeaveType leaveType = config.CreateMapper().Map<LeaveType>(leaveTypeViewModel);
+
+            // Create OR Edit a leave type
+            if (leaveType.Id == 0)
             {
                 Repo.Create(leaveType);
 
                 if (!ModelState.IsValid)
-                    return PartialView("_AddEditLeaveType", model);
-            }
-            
-            // Edit a leave type
-            if (model.Id != 0)
+                    return PartialView("_AddEditLeaveType", leaveTypeViewModel);
+            } else 
             {
-                Repo.Update(model);
+                Repo.Update(leaveType);
 
-                if (!ModelState.IsValid)    
-                    return PartialView("_AddEditLeaveType", model);
+                if (!ModelState.IsValid)
+                    return PartialView("_AddEditLeaveType", leaveTypeViewModel);
             }
 
             return View("Index");
