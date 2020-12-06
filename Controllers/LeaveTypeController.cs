@@ -99,7 +99,7 @@ namespace leavemanagementsystem.Controllers
                     return PartialView("_AddEditLeaveType", leaveTypeViewModel);
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
