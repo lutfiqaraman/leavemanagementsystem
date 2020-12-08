@@ -65,9 +65,6 @@ function PopupForm(url) {
                 title: 'Add/Edit Leave Type',
                 height: 375,
                 width: 500,
-                open: function () {
-                    $('AddEditLeaveTypeForm').addClass('.modal .fade')
-                },
                 close: function () {
                     popUp.dialog('destroy').remove();
                 }
