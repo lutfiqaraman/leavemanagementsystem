@@ -64,7 +64,7 @@ function PopupForm(url) {
                 resizable: false,
                 title: 'Add/Edit Leave Type',
                 height: 375,
-                width: 500,
+                width: 550,
                 close: function () {
                     popUp.dialog('destroy').remove();
                 }
