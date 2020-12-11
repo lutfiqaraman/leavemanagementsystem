@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using leavemanagementsystem.Contracts;
+using leavemanagementsystem.Data.Entities;
+using leavemanagementsystem.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace leavemanagementsystem.Controllers
 {
@@ -16,8 +16,7 @@ namespace leavemanagementsystem.Controllers
         public ILeaveAllocationRepository LeaveAllocationRepo { get; private set; }
         public IMapper Mapper { get; private set; }
 
-        public LeaveAllocationController(
-            IMapper mapper, 
+        public LeaveAllocationController(IMapper mapper, 
             ILeaveTypeRepository leaveTypeRepo, 
             ILeaveAllocationRepository leaveAllocationRepo)
         {
@@ -26,9 +25,39 @@ namespace leavemanagementsystem.Controllers
             LeaveAllocationRepo = leaveAllocationRepo;
         }
         
-        public IActionResult Index()
+        public ActionResult Index()
         {
-            return View();
+            List<LeaveAllocationViewModel> listLeaveAllocations = GetLeaveAllocationsByMap();
+            return View(listLeaveAllocations);
+        }
+
+        public JsonResult GetLeaveAllocation()
+        {
+            List<LeaveAllocationViewModel> leaveAllocation = GetLeaveAllocationsByMap();
+               
+            JsonResult result = Json(new
+            {
+                data = leaveAllocation
+            });
+
+            return result;
+        }
+
+        public List<LeaveAllocationViewModel> GetLeaveAllocationsByMap()
+        {
+            List<LeaveAllocation> leaveAllocation = LeaveAllocationRepo.GetAll().ToList();
+
+            MapperConfiguration config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<LeaveAllocation, LeaveAllocationViewModel>();
+            });
+
+            Mapper = config.CreateMapper();
+
+            List<LeaveAllocationViewModel> leaveAllocationViewModels =
+                Mapper.Map<List<LeaveAllocation>, List<LeaveAllocationViewModel>>(leaveAllocation);
+
+            return leaveAllocationViewModels;
         }
     }
 }
