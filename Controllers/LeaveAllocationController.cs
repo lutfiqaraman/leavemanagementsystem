@@ -27,13 +27,13 @@ namespace leavemanagementsystem.Controllers
         
         public ActionResult Index()
         {
-            List<LeaveAllocationViewModel> listLeaveAllocations = GetLeaveAllocationsByMap();
+            List<LeaveAllocationViewModel> listLeaveAllocations = MappingLeaveAllocations();
             return View(listLeaveAllocations);
         }
 
         public JsonResult GetLeaveAllocation()
         {
-            List<LeaveAllocationViewModel> leaveAllocation = GetLeaveAllocationsByMap();
+            List<LeaveAllocationViewModel> leaveAllocation = MappingLeaveAllocations();
                
             JsonResult result = Json(new
             {
@@ -43,7 +43,7 @@ namespace leavemanagementsystem.Controllers
             return result;
         }
 
-        public List<LeaveAllocationViewModel> GetLeaveAllocationsByMap()
+        public List<LeaveAllocationViewModel> MappingLeaveAllocations()
         {
             List<LeaveAllocation> leaveAllocation = LeaveAllocationRepo.GetAll().ToList();
 
