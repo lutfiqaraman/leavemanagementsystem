@@ -7,10 +7,10 @@ $(document).ready(function () {
         select: true,
         dom: 'Bfrtip',
         
-        "ajax": {
-            "url": "/leavetype/GetLeaveType",
-            "type": "GET",
-            "datatype": "json"
+        ajax: {
+            url: '/leavetype/GetLeaveType',
+            type: 'GET',
+            datatype: 'json'
         },
 
         buttons: [
@@ -41,7 +41,7 @@ $(document).ready(function () {
             }
         ],
 
-        "columns": [
+        columns: [
             { "data": "name" },
             { "data": "description" },
             { "data": "defaultDays" }
