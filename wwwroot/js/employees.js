@@ -42,11 +42,9 @@ $(document).ready(function () {
         ],
 
         columns: [
-            { "data": "username" },
-            { "data": "email" },
-            { "data": "phonenumber" },
             { "data": "firstname" },
             { "data": "lastname" },
+            { "data": "email" },
             { "data": "taxid" },
             { "data": "dateofbirth" },
             { "data": "datejoin" },
