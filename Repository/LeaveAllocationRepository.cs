@@ -17,25 +17,25 @@ namespace leavemanagementsystem.Repository
             DbContext = db;
         }
 
-        public bool Create(Data.Entities.LeaveAllocation entity)
+        public bool Create(LeaveAllocation entity)
         {
             DbContext.LeaveAllocations.Add(entity);
             return Save();
         }
 
-        public void Delete(Data.Entities.LeaveAllocation entity)
+        public void Delete(LeaveAllocation entity)
         {
             DbContext.LeaveAllocations.Remove(entity);
             DbContext.SaveChanges();
         }
 
-        public ICollection<Data.Entities.LeaveAllocation> GetAll()
+        public ICollection<LeaveAllocation> GetAll()
         {
             List<LeaveAllocation> leaveAllocations = DbContext.LeaveAllocations.ToList();
             return leaveAllocations;
         }
 
-        public Data.Entities.LeaveAllocation GetById(int id)
+        public LeaveAllocation GetById(int id)
         {
             LeaveAllocation leaveAllocation = DbContext.LeaveAllocations.Find(id);
             return leaveAllocation;
@@ -47,7 +47,7 @@ namespace leavemanagementsystem.Repository
             return numberOfRecordsChanged > 0;
         }
 
-        public bool Update(Data.Entities.LeaveAllocation entity)
+        public bool Update(LeaveAllocation entity)
         {
             DbContext.LeaveAllocations.Update(entity);
             return Save();
