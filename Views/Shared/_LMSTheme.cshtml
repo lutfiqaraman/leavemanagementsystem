@@ -92,7 +92,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             @if (User.IsInRole("Administrator"))
                             {
 
-                                <li class="nav-item menu-open">
+                                <li class="nav-item has-treeview menu-open">
 
                                     <a href="#" class="nav-link active">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -145,7 +145,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            @RenderBody()
+            <div class="content-header">
+                <div class="container-fluid">
+
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
         </div>
 
         <!-- Main Footer -->
