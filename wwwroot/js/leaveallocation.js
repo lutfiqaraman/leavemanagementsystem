@@ -8,7 +8,7 @@ $(document).ready(function () {
         dom: 'Bfrtip',
 
         ajax: {
-            url: '/leavetype/GetLeaveType',
+            url: '/leaveAllocation/GetLeaveAllocation',
             type: 'GET',
             datatype: 'json'
         },
@@ -17,7 +17,7 @@ $(document).ready(function () {
             {
                 text: 'New',
                 action: function () {
-                    var url = '/leavetype/AddEditLeaveType';
+                    var url = '/leaveAllocation/AddEditLeaveAllocation';
                     PopupForm(url);
                 }
             },
@@ -25,7 +25,7 @@ $(document).ready(function () {
                 text: 'Edit',
                 action: function () {
                     var id = table.rows({ selected: true }).data()[0].id;
-                    var url = '/leavetype/AddEditLeaveType/' + id;
+                    var url = '/leaveAllocation/AddEditLeaveAllocation/' + id;
 
                     PopupForm(url);
                 }
@@ -34,7 +34,7 @@ $(document).ready(function () {
                 text: 'Delete',
                 action: function () {
                     var id = table.rows({ selected: true }).data()[0].id;
-                    var url = '/leavetype/DeleteLeaveType/' + id;
+                    var url = '/leaveAllocation/DeleteLeaveAllocation/' + id;
 
                     DeleteLeaveType(url);
                 }
@@ -42,9 +42,7 @@ $(document).ready(function () {
         ],
 
         columns: [
-            { "data": "name" },
-            { "data": "description" },
-            { "data": "defaultDays" }
+            { "data": "leaveTypes" }
         ]
     });
 
