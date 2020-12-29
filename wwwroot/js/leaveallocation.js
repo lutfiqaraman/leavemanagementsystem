@@ -42,7 +42,7 @@ $(document).ready(function () {
         ],
 
         columns: [
-            { "data": "leaveTypes" }
+            { "data": "leaveTypeId" }
         ]
     });
 
