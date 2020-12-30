@@ -36,7 +36,7 @@ $(document).ready(function () {
                     var id = table.rows({ selected: true }).data()[0].id;
                     var url = '/leaveAllocation/DeleteLeaveAllocation/' + id;
 
-                    DeleteLeaveType(url);
+                    DeleteLeaveAllocation(url);
                 }
             }
         ],
