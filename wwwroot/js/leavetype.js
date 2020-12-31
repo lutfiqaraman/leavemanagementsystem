@@ -98,7 +98,7 @@ function SubmitForm(form) {
 }
 
 function DeleteLeaveType(url) {
-    if (confirm('Are you sure to delete this leave type')) {
+    if (confirm('Are you sure to delete this leave type ?')) {
         $.ajax({
             type: 'POST',
             url: url,

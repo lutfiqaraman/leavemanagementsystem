@@ -47,3 +47,22 @@ $(document).ready(function () {
     });
 
 });
+
+function DeleteLeaveAllocation(url) {
+    if (confirm('Are you sure to delete this leave allocation ?')) {
+        $.ajax({
+            type: 'POST',
+            url: url,
+            success: function (data) {
+                if (data.success) {
+                    $.notify('Deleted successfully ...', {
+                        globalPosition: 'left center',
+                        className: 'success'
+                    });
+
+                    window.location.reload();
+                }
+            }
+        })
+    }
+}
