@@ -59,5 +59,17 @@ namespace leavemanagementsystem.Controllers
 
             return leaveAllocationViewModels;
         }
+
+        [HttpPost]
+        public ActionResult DeleteLeaveAllocation(int id)
+        {
+            LeaveAllocation leaveAllocation = LeaveAllocationRepo.GetById(id);
+            LeaveAllocationRepo.Delete(leaveAllocation);
+
+            return Json(new
+            {
+                success = true
+            });
+        }
     }
 }
