@@ -60,6 +60,18 @@ namespace leavemanagementsystem.Controllers
             return leaveAllocationViewModels;
         }
 
+        [HttpGet]
+        public ActionResult AddEditLeaveAllocation(int id = 0)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddEditLeaveAllocation(LeaveAllocationViewModel leaveAllocationVM)
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult DeleteLeaveAllocation(int id)
         {
