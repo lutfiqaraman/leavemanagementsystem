@@ -48,6 +48,10 @@ $(document).ready(function () {
 
 });
 
+function PopupForm(url) {
+    console.log(url);
+}
+
 function DeleteLeaveAllocation(url) {
     if (confirm('Are you sure to delete this leave allocation ?')) {
         $.ajax({
